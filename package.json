@@ -8,7 +8,9 @@
 		"build": "tsc && vite build",
 		"lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
-		"eslint": "eslint"
+		"eslint": "eslint --max-warnings 0",
+		"pre-check": "tsc && npx lint-staged",
+		"postinstall": "husky install"
 	},
 	"lint-staged": {
 		"src/**/*.{ts,tsx}": [
@@ -29,6 +31,7 @@
 		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.1",
+		"husky": "^8.0.3",
 		"lint-staged": "12.5.0",
 		"typescript": "^5.0.2",
 		"vite": "^4.4.0"
