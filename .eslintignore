@@ -1,4 +1,11 @@
 tailwind.config.js
+tailwind.config.cjs
+
 .eslintrc.cjs
+.eslintrc.js
+
 postcss.config.js
+postcss.config.cjs
+
 vite.config.ts
+
