@@ -59,7 +59,9 @@ const BasicLayout = () => {
                         background: 'rgba(0, 0, 0, 0.2)',
                         zIndex: 200
                     }}
-                />
+                >
+                    logo区域
+                </div>
                 <Menu
                     mode='inline'
                     defaultSelectedKeys={[pathname]}
