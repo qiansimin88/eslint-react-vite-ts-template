@@ -1,3 +1,11 @@
+/*
+ * @Author: qsm 348867341@qq.com
+ * @Date: 2023-08-09 03:44:46
+ * @LastEditors: qsm 348867341@qq.com
+ * @LastEditTime: 2023-10-25 03:46:42
+ * @FilePath: /eslint-react-vite-ts-template/src/utils/axios/index.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import axios from 'axios'
 import type {
     AxiosInstance,
@@ -55,7 +63,6 @@ class Request {
                 // code为0为请求正常，不为0为请求异常,使用message提示
                 // window.alert 这里换成error message组件即可
                 message.error(error.message)
-                console.log(1111, error)
                 return { message: onErrorReason(error.message) }
             }
         )
