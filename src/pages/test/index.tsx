@@ -1,57 +1,43 @@
-import { useEffect, useState } from 'react'
-import api from '@/api/demo'
-import Styles from './index.module.less'
-import useCountdown from '@/components/hook/useCountdown.ts'
+import { useState } from 'react'
+// import api from '@/api/demo'
+// import Styles from './index.module.less'
+// import useCountdown from '@/components/hook/useCountdown.ts'
 /*
  * @Author: qsm 348867341@qq.com
  * @Date: 2023-07-18 03:13:29
  * @LastEditors: qsm 348867341@qq.com
- * @LastEditTime: 2023-10-25 04:31:28
+ * @LastEditTime: 2023-11-01 04:30:24
  * @FilePath: /eslint-react-vite-ts-template/src/App.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 function App() {
-    const [state, setState] = useState(0)
-    const [de2, setDe2] = useState(0)
-    const { time, startCount } = useCountdown({
-        initValue: 4,
-        endHandler() {
-            console.log('结束了')
-        }
-    })
+    const [value, setValue] = useState(100)
+    function clickHandler() {
+        // 1.传入常量，state会合并
+        setValue(value + 1)
+        setValue(value + 1)
+        console.log(1, value) // 100
+        // 2.传入函数，state不会合并
+        setValue(value => value + 1)
+        // setValue(value => value + 1)
+        console.log(2, value) // 100
 
-    useEffect(() => {
-        api.postDemoApi().then(res => {
-            console.log(res)
+        // // 3.setTimeout中，React18也开始合并state（之前版本会同步更新、不合并）
+        setTimeout(() => {
+            setValue(value + 1)
+            setValue(value + 1)
+            setValue(value + 1)
+            console.log(3, value) // 100
         })
-    }, [])
 
-    useEffect(() => {
-        console.log(time)
-    }, [time])
-
-    const hah = () => {
-        console.log(state)
-        setDe2(s => {
-            return (s = s + state)
+        // // 4.同理 setTimeout中，传入函数不合并
+        setTimeout(() => {
+            setValue(value => value + 1)
+            setValue(value => value + 1)
+            console.log(4, value) // 100
         })
     }
-
-    return (
-        <div className='text-sky-400/100 w-[10px] text-3xl font-bold underline text-cyan-100'>
-            22222
-            <div onClick={() => setState(s => (s += 1))}>div1</div>
-            {state}
-            <div onClick={hah}>
-                div2<br></br>
-                {de2}
-            </div>
-            <div onClick={() => startCount()} className={Styles.color}>
-                我是红色
-                {time}
-            </div>
-        </div>
-    )
+    return <button onClick={clickHandler}>点击 {value}</button>
 }
 
 export default App
