@@ -16,7 +16,7 @@ module.exports = {
         'plugin:react-hooks/recommended',
         'plugin:react/jsx-runtime' // jsx运行时 不需要在页面必须引入react
     ],
-    parser: '@typescript-eslint/parser',
+    parser: '@typescript-eslint/parser', // 解析器
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
