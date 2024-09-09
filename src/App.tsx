@@ -22,6 +22,9 @@ dayjs.locale('zh-cn')
 const App = () => {
     const { primaryColor } = useGlobalStore()
 
+    // 环境变量的集合
+    console.log(import.meta.env)
+
     return (
         <ConfigProvider
             locale={zhCN}
